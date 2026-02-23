@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My 2026 Vision Board</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: italics;
+      background: radial-gradient(circle at top, #ffcc70, #c850c0, #4b1fa6, #140021);
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+   
+    #sparkle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 30px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, #ffd36a, #ff9de2, #b98bff);
+      -background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .music-player {
+      margin-top: 20px;
+    }
+
+    audio {
+      width: 260px;
+      border-radius: 30px;
+      box-shadow: 0 0 25px rgba(255, 200, 255, 0.6);
+      animation: audioGlow 3s infinite;
+    }
+
+    @keyframes audioGlow {
+      0% { box-shadow: 0 0 15px rgba(255, 200, 255, 0.4); }
+      50% { box-shadow: 0 0 40px rgba(255, 215, 150, 0.8); }
+      100% { box-shadow: 0 0 15px rgba(190, 120, 255, 0.4); }
+    }
+
+    .vision-board {
+      column-count: 3;
+      column-gap: 25px;
+      padding: 40px;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    @media (max-width: 900px) {
+      .vision-board { column-count: 2; }
+    }
+
+    @media (max-width: 600px) {
+      .vision-board { column-count: 1; }
+    }
+
+    .card {
+      break-inside: avoid;
+      margin-bottom: 25px;
+      background: linear-gradient(180deg, rgba(255,215,150,0.18), rgba(155,90,255,0.12));
+      backdrop-filter: blur(14px);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(255, 180, 255, 0.25);
+      animation: cardGlow 6s infinite;
+    }
+
+    @keyframes cardGlow {
+      0% { box-shadow: 0 15px 40px rgba(190,120,255,0.25); }
+      50% { box-shadow: 0 30px 70px rgba(255,215,150,0.45); }
+      100% { box-shadow: 0 15px 40px rgba(255,160,255,0.3); }
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 22px;
+      text-align: center;
+    }
+
+    .card-content h2 {
+      font-size: 1.3rem;
+      background: linear-gradient(90deg, #ffe29f, #ffa3fd);
+      -background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+  
+  <canvas id="sparkle-canvas"></canvas>
+
+  <header>
+    <h1>Vision Board 2026</h1>
+    <p>Warm • Bright • Abundant • Magical ✨</p>
+
+    <div class="music-player">
+      <audio controls loop>
+        <source src="vision.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </header>
+
+  <!-- IMAGES -->
+  <section class="vision-board">
+
+    <div class="card">
+      <img src="pic1.jpg" alt="Abundance">
+      <div class="card-content">
+        <h2>Abundance</h2>
+        <p>Money, success, and limitless growth.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="pic7.jpg" alt="Self Concept">
+      <div class="card-content">
+        <h2>Self Concept</h2>
+        <p>Confidence, self-worth, and inner power.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="pic2.jpg" alt="Travel">
+      <div class="card-content">
+        <h2>Travel</h2>
+        <p>Golden sunsets and new destinations.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="pic4.jpg" alt="Health">
+      <div class="card-content">
+        <h2>Health</h2>
+        <p>Peaceful mind and glowing body.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="pic6.jpg" alt="Lifestyle">
+      <div class="card-content">
+        <h2>Lifestyle</h2>
+        <p>Soft luxury and joyful living.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="pic3.jpg" alt="Magic">
+      <div class="card-content">
+        <h2>Magic</h2>
+        <p>The universe always works in my favour.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+     2026 • I am magic ✨
+  </footer>
+
+  
+  <script>
+    const canvas = document.getElementById("sparkle-canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let sparkles = [];
+
+    function addSparkle() {
+      sparkles.push({
+        x: Math.random() * canvas.width,
+        y: 0,
+        size: 2,
+        speed: 1
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      sparkles.forEach((s, i) => {
+        ctx.fillStyle = "rgba(255,215,150,0.7)";
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        s.y += s.speed;
+
+        if (s.y > canvas.height) {
+          sparkles.splice(i, 1);
+        }
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    setInterval(addSparkle, 200);
+    animate();
+  </script>
+
+</body>
+</html>
